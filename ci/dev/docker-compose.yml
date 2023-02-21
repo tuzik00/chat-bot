@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:1.15-alpine
+    restart: always
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+
+  postgresql:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - '5432'
+
+  app:
+    build: ../../
+    env_file:
+      - .env
+    ports:
+      - '4001'
+    deploy:
+      restart_policy:
+        max_attempts: 3
+      replicas: 5
+      mode: replicated
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 150M
+        reservations:
+          cpus: '0.25'
+          memory: 120M
+    depends_on:
+      - postgresql

@@ -1,0 +1,63 @@
+{
+  "name": "chat-bot-openai",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "scripts": {
+    "build": "run-s build:*",
+    "build:clean": "rimraf dist",
+    "build:ts": "ttsc",
+    "dev": "cross-env NODE_ENV=development nodemon src/main.ts --watch",
+    "start": "cross-env NODE_ENV=production node ./dist/main.js",
+    "test": "run-s test:*",
+    "test:lint": "eslint src",
+    "https": "../../ci/dev/ngrok http 3001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/tuzik0/chat-bot-openai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tuzik0/chat-bot-openai#readme",
+  "dependencies": {
+    "@qiwi/bill-payments-node-js-sdk": "^3.2.1",
+    "@tlgr/poll": "^1.5.1",
+    "class-validator": "^0.14.0",
+    "content-type": "^1.0.5",
+    "date-fns": "^2.29.3",
+    "dotenv": "^10.0.0",
+    "fastify": "^4.12.0",
+    "fastify-plugin": "^4.5.0",
+    "localtunnel": "^2.0.2",
+    "lodash": "^4.17.21",
+    "ngrok": "^4.3.3",
+    "openai": "^3.1.0",
+    "path-to-regexp": "^6.2.1",
+    "pg": "^8.8.0",
+    "prom-client": "^14.1.1",
+    "qiwi-sdk": "^4.1.0",
+    "short-uuid": "^4.2.2",
+    "simple-node-logger": "^21.8.12",
+    "telegraf": "^4.11.2",
+    "typeorm": "^0.3.11"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.4",
+    "@typescript-eslint/parser": "^5.30.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.19.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "nodemon": "^2.0.18",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.7.4",
+    "typescript-transform-paths": "^3.3.1"
+  }
+}
