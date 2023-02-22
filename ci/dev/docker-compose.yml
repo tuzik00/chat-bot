@@ -23,15 +23,17 @@ services:
       - '5432'
 
   app:
-    build: ../../
-    env_file:
-      - .env
+    build:
+      context: ../../
+      dockerfile: Dockerfile
+    image: app:v1
+    env_file: ./.env
     ports:
       - '4001'
     deploy:
       restart_policy:
         max_attempts: 3
-      replicas: 5
+      replicas: 1
       mode: replicated
       resources:
         limits:
